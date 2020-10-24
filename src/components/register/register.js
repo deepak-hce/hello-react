@@ -1,4 +1,10 @@
 import React from 'react';
+import history from '../../helpers/history';
+
+// const history = useHistory();
+const globalApi = require('../../helpers/globalApi');
+const util = require('../../helpers/util');
+
 
 
 class Register extends React.Component {
@@ -9,9 +15,11 @@ class Register extends React.Component {
             email: '',
             password: '',
         }
+
+
+
+        
     }
-
-
 
     handleInputChange(event) {
         const target = event.target;
@@ -22,23 +30,16 @@ class Register extends React.Component {
             [name]: value
         });
 
-        console.log(this.state);
-
     }
 
     registerFormSubmit(event) {
+        // withRouter(({ history })).
         event.preventDefault();
-        console.log(this.state);
-
-        fetch('http://localhost:3000/api/v1/customer', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.state)
-        }).then(res => {
-            console.log(res.json().then(res1 => console.log(res1)));
+        globalApi.post('customer', this.state).then(res =>{
+            console.log(res);
+            util.notify('success', res.Comment);
+            history.push('/');
+            // return <Link to = "/" />
         })
 
 
@@ -51,7 +52,7 @@ class Register extends React.Component {
                 <form className="form-horizontal" onSubmit={this.registerFormSubmit.bind(this)}>
 
                     <div className="form-group">
-                        <label className="control-label col-sm-2" for="email">Full name:</label>
+                        <label className="control-label col-sm-2" htmlFor="email">Full name:</label>
                         <div className="col-sm-10">
                             <input type="text" value={this.state.name}
                                 onChange={this.handleInputChange.bind(this)} className="form-control" id="name" placeholder="Enter full name" name="name" />
@@ -59,14 +60,14 @@ class Register extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <label className="control-label col-sm-2" for="email">Email:</label>
+                        <label className="control-label col-sm-2" htmlFor="email">Email:</label>
                         <div className="col-sm-10">
                             <input type="email" value={this.state.email}
                                 onChange={this.handleInputChange.bind(this)} className="form-control" id="email" placeholder="Enter email" name="email" />
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="control-label col-sm-2" for="pwd">Password:</label>
+                        <label className="control-label col-sm-2" htmlFor="pwd">Password:</label>
                         <div className="col-sm-10">
                             <input type="password" value={this.state.password}
                                 onChange={this.handleInputChange.bind(this)} className="form-control" id="pwd" placeholder="Enter password" name="password" />

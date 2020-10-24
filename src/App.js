@@ -1,12 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Home from './components/home/home';
-import Register from './components/register/register';
-
-function Hello(props) {
-  return <h1> Hello from react! {props.library} </h1>
-}
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { Router } from 'react-router-dom';
+import history from './helpers/history';
+import Routes from './Routes';
 
 
 
@@ -14,8 +12,10 @@ function App() {
 
   return (
     <>
-      <Home />
-      <Register />
+      <ReactNotification/>
+      <Router history = { history }>
+        <Routes />
+      </Router>
     </>
   );
 }
