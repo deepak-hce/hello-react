@@ -5,7 +5,6 @@ const util = require('./util');
 // Request Interceptor
 
 axios.interceptors.request.use(function (config) {
-    console.log(config);
     config.headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -29,11 +28,20 @@ axios.interceptors.response.use(function (response) {
 
 
 
-export function get(endPoint ,body) {
+export function get(endPoint) {
     return axios.get(`${baseUrl}${endPoint}`)
 }
+
+export function get1(endPoint) {
+    return axios.get(`${endPoint}`);
+}
+
 
 
 export function post(endPoint ,body) {
     return axios.post(`${baseUrl}${endPoint}`, JSON.stringify(body));
+}
+
+export function post1(endPoint ,body) {
+    return axios.post(`${endPoint}`, JSON.stringify(body));
 }

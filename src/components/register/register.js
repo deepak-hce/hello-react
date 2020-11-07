@@ -35,10 +35,22 @@ class Register extends React.Component {
     registerFormSubmit(event) {
         // withRouter(({ history })).
         event.preventDefault();
-        globalApi.post('customer', this.state).then(res =>{
+        // globalApi.post('customer', this.state).then(res =>{
+        //     console.log(res);
+        //     util.notify('success', res.Comment);
+        //     history.push('/');
+        //     // return <Link to = "/" />
+        // })
+
+        const data = {	
+            "email":"shankarshubham9@.com",
+            "dateOfBirth":"1997-01-18",
+            "nameOfApplicant":"Shubham Shankar",
+            "mobile":"8130339070"
+            }
+
+        globalApi.post1('http://api.indiaecash.co.in/api/auth/user-registration', data).then(res =>{
             console.log(res);
-            util.notify('success', res.Comment);
-            history.push('/');
             // return <Link to = "/" />
         })
 
