@@ -1,18 +1,20 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './auth/PrivateRoute';
 
 import Home from './components/home/home';
 import Register from './components/register/register';
 import Comment from './components/comment/comment';
 import ProtectedRoute from './components/protectedRoute/protectedRoute';
+import Flex from './components/flex/flex';
 
 
 
 export default function Routes() {
     return (
         <Switch>
-            <Route path = "/flex" component = {Register} />
+            <Redirect exact from="/" to="flex" />
+            <Route path = "/flex" component = {Flex} />
             <Route path = "/register" component = {Register} />
             <Route path = "/" exact component = {Home} />
             <Route path = "/comment" exact component = {Comment} />

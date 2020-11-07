@@ -1,9 +1,9 @@
 import React from 'react';
-import history from '../../helpers/history';
+// import history from '../../helpers/history';
 
 // const history = useHistory();
 const globalApi = require('../../helpers/globalApi');
-const util = require('../../helpers/util');
+// const util = require('../../helpers/util');
 
 
 
@@ -60,7 +60,9 @@ class Register extends React.Component {
     render() {
         return (
             <div className="container">
-                <h2>Customer Registration Form</h2>
+            <div className = "login-box">
+
+                <h2 className = "heading">Customer Registration Form</h2>
                 <form className="form-horizontal" onSubmit={this.registerFormSubmit.bind(this)}>
 
                     <div className="form-group">
@@ -87,10 +89,11 @@ class Register extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
-                            <button type="submit" className="btn btn-default">Submit</button>
+                            <button type="submit" className="btn btn-block btn-success">Submit</button>
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         )
     }
