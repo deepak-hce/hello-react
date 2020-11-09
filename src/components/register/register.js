@@ -15,10 +15,6 @@ class Register extends React.Component {
             email: '',
             password: '',
         }
-
-
-
-        
     }
 
     handleInputChange(event) {

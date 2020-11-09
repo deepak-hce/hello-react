@@ -1,0 +1,15 @@
+.header {
+    height: 60px;
+    background-color: black;
+    display: flex;
+    /* flex: 1; */
+    justify-content: flex-end;
+}
+
+.header > .logo {
+    flex: 1;
+    align-self: flex-start;
+    max-height: 60px;
+    margin-left: 30px;
+}
+
